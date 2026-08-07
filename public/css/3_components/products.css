@@ -1,0 +1,32 @@
+.products {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.products__layout {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.products__price-filter {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.products__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  flex-grow: 1;
+}
+
+@media (min-width: 64rem) {
+  .products__layout {
+    flex-direction: row;
+  }
+
+  .products__price-filter {
+    max-width: 20rem;
+  }
+}

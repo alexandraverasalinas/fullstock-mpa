@@ -1,0 +1,43 @@
+/* Declare layers in cascade order */
+@layer definitions, reset, global, layouts, components, utilities;
+
+/* 1 Foundation */
+@import "1_foundation/colors.css" layer(definitions);
+@import "1_foundation/typography.css" layer(definitions);
+@import "1_foundation/reset.css" layer(reset);
+@import "1_foundation/global.css" layer(global);
+
+/* 2 Layouts */
+@import "2_layouts/container.css" layer(layouts);
+@import "2_layouts/section.css" layer(layouts);
+
+/* 3 Components */
+/* UI */
+@import "3_components/button.css" layer(components);
+@import "3_components/separator.css" layer(components);
+@import "3_components/input-field.css" layer(components);
+
+/* Routes */
+@import "3_components/not-found.css" layer(components);
+@import "3_components/error.css" layer(components);
+@import "3_components/root.css" layer(components);
+@import "3_components/footer.css" layer(components);
+@import "3_components/header-main.css" layer(components);
+@import "3_components/header-actions.css" layer(components);
+@import "3_components/main-nav.css" layer(components);
+@import "3_components/categories.css" layer(components);
+@import "3_components/category.css" layer(components);
+@import "3_components/features.css" layer(components);
+@import "3_components/hero.css" layer(components);
+@import "3_components/category-header.css" layer(components);
+@import "3_components/products.css" layer(components);
+@import "3_components/price-filter.css" layer(components);
+@import "3_components/product-card.css" layer(components);
+@import "3_components/product.css" layer(components);
+@import "3_components/cart.css" layer(components);
+@import "3_components/checkout.css" layer(components);
+@import "3_components/order-confirmation.css" layer(components);
+@import "3_components/prose.css" layer(components);
+
+/* 4 Utilities */
+/* @import "4_utilities/__.css" layer(utilities); */

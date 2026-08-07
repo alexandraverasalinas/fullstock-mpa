@@ -1,0 +1,17 @@
+/* .not-found {
+} */
+
+.not-found__content {
+  text-align: center;
+}
+
+.not-found__title {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.not-found__message {
+  margin-bottom: 1rem;
+  color: var(--muted-foreground);
+}

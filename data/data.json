@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Polos",
+      "slug": "polos",
+      "imgSrc": "/images/polos.jpg",
+      "alt": "Polos",
+      "description": "Polos"
+    },
+    {
+      "id": 2,
+      "name": "Tazas",
+      "slug": "tazas",
+      "imgSrc": "/images/tazas.jpg",
+      "alt": "Tazas",
+      "description": "Tazas"
+    },
+    {
+      "id": 3,
+      "name": "Stickers",
+      "slug": "stickers",
+      "imgSrc": "/images/stickers.jpg",
+      "alt": "Stickers",
+      "description": "Stickers"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Polo React",
+      "imgSrc": "/images/polos/polo-react.png",
+      "price": 2000,
+      "description": "Viste tu pasión por React con estilo y comodidad en cada línea de código.",
+      "categoryId": 1,
+      "features": [
+        "Estampado resistente",
+        "Algodón suave",
+        "Costuras reforzadas",
+        "Corte moderno"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Polo JavaScript",
+      "imgSrc": "/images/polos/polo-js.png",
+      "price": 2000,
+      "description": "Deja que tu amor por JavaScript hable a través de cada hilo de este polo.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 3,
+      "name": "Polo Node.js",
+      "imgSrc": "/images/polos/polo-node.png",
+      "price": 2000,
+      "description": "Conéctate al estilo con este polo de Node.js, tan robusto como tu código.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 4,
+      "name": "Polo TypeScript",
+      "imgSrc": "/images/polos/polo-ts.png",
+      "price": 2000,
+      "description": "Tipa tu estilo con precisión: lleva tu pasión por TypeScript en cada hilo.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 5,
+      "name": "Polo Full-Stack Developer",
+      "imgSrc": "/images/polos/polo-fullstack.png",
+      "price": 2500,
+      "description": "Domina ambos mundos con estilo: lleva tu título de FullStack Developer en cada línea de tu look.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 6,
+      "name": "Polo Frontend Developer",
+      "imgSrc": "/images/polos/polo-frontend.png",
+      "price": 2500,
+      "description": "Construye experiencias con estilo: luce con orgullo tu polo de Frontend Developer.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 7,
+      "name": "Polo Backend Developer",
+      "imgSrc": "/images/polos/polo-backend.png",
+      "price": 2500,
+      "description": "Domina el servidor con estilo: viste con orgullo tu título de Backend Developer.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 8,
+      "name": "Polo It's A Feature",
+      "imgSrc": "/images/polos/polo-feature.png",
+      "price": 1500,
+      "description": "Cuando el bug se convierte en arte: lleva con orgullo tu polo 'It's a feature'.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 9,
+      "name": "Polo It Works On My Machine",
+      "imgSrc": "/images/polos/polo-works.png",
+      "price": 1500,
+      "description": "El clásico del desarrollador: presume tu confianza con 'It works on my machine'.",
+      "categoryId": 1,
+      "features": []
+    },
+    {
+      "id": 10,
+      "name": "Taza GitHub",
+      "imgSrc": "/images/tazas/taza-github.png",
+      "price": 1499,
+      "description": "Taza GitHub",
+      "categoryId": 2,
+      "features": []
+    },
+    {
+      "id": 11,
+      "name": "Taza Git",
+      "imgSrc": "/images/tazas/taza-git.png",
+      "price": 1499,
+      "description": "Taza Git",
+      "categoryId": 2,
+      "features": []
+    },
+    {
+      "id": 12,
+      "name": "Taza JavaScript",
+      "imgSrc": "/images/tazas/taza-js.png",
+      "price": 1499,
+      "description": "Taza JavaScript",
+      "categoryId": 2,
+      "features": []
+    },
+    {
+      "id": 13,
+      "name": "Taza React",
+      "imgSrc": "/images/tazas/taza-react.png",
+      "price": 1499,
+      "description": "Taza React",
+      "categoryId": 2,
+      "features": []
+    },
+    {
+      "id": 14,
+      "name": "Taza SQL",
+      "imgSrc": "/images/tazas/taza-sql.png",
+      "price": 1499,
+      "description": "Taza SQL",
+      "categoryId": 2,
+      "features": []
+    },
+    {
+      "id": 15,
+      "name": "Sticker Docker",
+      "imgSrc": "/images/stickers/sticker-docker.png",
+      "price": 500,
+      "description": "Sticker Docker",
+      "categoryId": 3,
+      "features": []
+    },
+    {
+      "id": 16,
+      "name": "Sticker GitHub",
+      "imgSrc": "/images/stickers/sticker-github.png",
+      "price": 500,
+      "description": "Sticker GitHub",
+      "categoryId": 3,
+      "features": []
+    },
+    {
+      "id": 17,
+      "name": "Sticker React",
+      "imgSrc": "/images/stickers/sticker-react.png",
+      "price": 500,
+      "description": "Sticker React",
+      "categoryId": 3,
+      "features": []
+    },
+    {
+      "id": 18,
+      "name": "Sticker VS Code",
+      "imgSrc": "/images/stickers/sticker-vscode.png",
+      "price": 500,
+      "description": "Sticker VS Code",
+      "categoryId": 3,
+      "features": []
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "items": [
+        {
+          "productId": 10,
+          "quantity": 2
+        },
+        {
+          "productId": 12,
+          "quantity": 3
+        }
+      ]
+    }
+  ]
+}

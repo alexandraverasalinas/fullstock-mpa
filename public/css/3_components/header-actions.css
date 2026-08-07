@@ -1,0 +1,28 @@
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-actions__separator {
+  height: 1.5rem;
+}
+
+.header-actions__cart {
+  position: relative;
+}
+
+.header-actions__cart-badge {
+  position: absolute;
+  bottom: -0.25rem;
+  right: -0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  color: var(--primary-foreground);
+  background-color: var(--primary-background);
+}

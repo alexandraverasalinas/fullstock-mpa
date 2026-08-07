@@ -1,0 +1,27 @@
+<header class="root__header">
+  <div class="container header-main">
+    <div class="header-main__top">
+      <a href="/"><img src="/images/fullstock-logo.svg" alt="FullStock inicio" width="128" height="32" /></a>
+      <div class="header-actions">
+        <a href="/cart" class="button button--ghost button--xl-icon header-actions__cart" aria-label="Carrito de compras">
+          <img src="/images/icons/cart.svg" alt="Carrito de compras" />
+          <span class="header-actions__cart-badge"><%= cartItemsCount %></span>
+        </a>
+      </div>
+    </div>
+    <div class="separator header-main__separator"></div>
+    <nav aria-label="Navegación principal" class="main-nav">
+      <ul class="main-nav__list" role="menubar">
+        <li class="main-nav__item" role="none">
+          <a href="/categories/polos" role="menuitem" class="main-nav__link">Polos</a>
+        </li>
+        <li class="main-nav__item" role="none">
+          <a href="/categories/tazas" role="menuitem" class="main-nav__link">Tazas</a>
+        </li>
+        <li class="main-nav__item" role="none">
+          <a href="/categories/stickers" role="menuitem" class="main-nav__link">Stickers</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
