@@ -6,7 +6,7 @@
       "slug": "polos",
       "imgSrc": "/images/polos.jpg",
       "alt": "Polos",
-      "description": "Polos"
+        "description": "Polos exclusivos con diseños que todo desarrollador querrá lucir. Ideales para llevar el código a donde vayas."
     },
     {
       "id": 2,
@@ -197,16 +197,56 @@
   "carts": [
     {
       "id": 1,
+      "items": []
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
       "items": [
         {
           "productId": 10,
+          "name": "Taza GitHub",
+          "price": 1499,
+          "imgSrc": "/images/tazas/taza-github.png",
           "quantity": 2
         },
         {
           "productId": 12,
+          "name": "Taza JavaScript",
+          "price": 1499,
+          "imgSrc": "/images/tazas/taza-js.png",
           "quantity": 3
+        },
+        {
+          "productId": 3,
+          "name": "Polo Node.js",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-node.png",
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "name": "Polo JavaScript",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-js.png",
+          "quantity": 2
         }
-      ]
+      ],
+      "shippingInfo": {
+        "email": "alexandraverasalinas@gmail.com",
+        "firstName": "a",
+        "lastName": "b",
+        "address": "c",
+        "city": "d",
+        "country": "PE",
+        "region": "e",
+        "zipCode": "123",
+        "phone": "222222222"
+      },
+      "total": 13495,
+      "status": "pending",
+      "createdAt": "2026-08-08T02:10:39.438Z"
     }
   ]
 }

@@ -13,14 +13,14 @@
       <div class="cart__item">
         <div class="cart__item-image">
           <img
-            src="<%= item.imgSrc %>"
-            alt="<%= item.name %>"
+            src="<%= item.product.imgSrc %>"
+            alt="<%= item.product.name %>"
             class="cart__item-image-content"
           />
         </div>
         <div class="cart__item-details">
           <div class="cart__item-header">
-            <h2 class="cart__item-title"><%= item.name %></h2>
+            <h2 class="cart__item-title"><%= item.product.name %></h2>
             <form method="post" action="/cart/delete-item">
               <input type="hidden" name="productId" value="<%= item.productId %>" />
               <button
@@ -36,9 +36,8 @@
             </form>
           </div>
           <div class="cart__item-footer">
-            <p class="cart__item-price">S/ <%= (item.price / 100).toFixed(2) %></p>
+            <p class="cart__item-price">S/ <%= (item.product.price / 100).toFixed(2) %></p>
             <div class="cart__item-quantity">
-              <!-- Botón Reducir -->
               <form method="post" action="<% if (item.quantity === 1) { %>/cart/delete-item<% } else { %>/cart/update-item<% } %>">
                 <input type="hidden" name="productId" value="<%= item.productId %>" />
                 <% if (item.quantity > 1) { %>
@@ -56,10 +55,8 @@
                 </button>
               </form>
               
-              <!-- Display de cantidad -->
               <span class="cart__item-quantity-display"><%= item.quantity %></span>
               
-              <!-- Botón Aumentar -->
               <form method="post" action="/cart/update-item">
                 <input type="hidden" name="productId" value="<%= item.productId %>" />
                 <input type="hidden" name="quantity" value="<%= item.quantity + 1 %>" />
@@ -84,11 +81,11 @@
         <p>Total</p>
         <p>S/ <%= (total / 100).toFixed(2) %></p>
       </div>
-<div class="cart__action">
-  <a href="/checkout" class="button button--lg cart__action-button">
-    Continuar Compra
-  </a>
-</div>
+      <div class="cart__action">
+        <a href="/checkout" class="button button--lg cart__action-button">
+          Continuar Compra
+        </a>
+      </div>
     </div>
     <% } %>
   </div>

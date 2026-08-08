@@ -1,0 +1,165 @@
+<section class="section checkout">
+  <div class="container">
+    <div class="checkout__layout">
+      <div class="checkout__summary">
+        <h2 class="checkout__summary_title">Resumen de la orden</h2>
+        <div class="checkout__summary_container">
+          <% for (const item of cartItems) { %>
+          <div class="checkout__item">
+            <div class="checkout__item-image">
+              <img
+                src="<%= item.product.imgSrc %>"
+                alt="<%= item.product.name %>"
+                class="checkout__item-image-content"
+              />
+            </div>
+            <div class="checkout__item-details">
+              <h3 class="checkout__item-title"><%= item.product.name %></h3>
+              <div class="checkout__item-price">
+                <p><%= item.quantity %></p>
+                <img
+                  src="/images/icons/x.svg"
+                  alt=""
+                  class="checkout__item-price-icon"
+                />
+                <p>S/ <%= (item.product.price / 100).toFixed(2) %></p>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <div class="checkout__total">
+            <p>Total</p>
+            <p>S/ <%= (total / 100).toFixed(2) %></p>
+          </div>
+        </div>
+      </div>
+
+      <form class="checkout__form" action="/checkout/place-order" method="post">
+        <legend class="checkout__legend">Información de contacto</legend>
+        <div class="input-field">
+          <label for="email">Correo electrónico</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="separator checkout__separator"></div>
+
+        <fieldset>
+          <legend class="checkout__legend">Información de envío</legend>
+          <div class="checkout__form-fields">
+            <div class="input-field">
+              <label for="firstName">Nombre</label>
+              <input
+                id="firstName"
+                name="firstName"
+                autocomplete="given-name"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <label for="lastName">Apellido</label>
+              <input
+                id="lastName"
+                name="lastName"
+                autocomplete="family-name"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <label for="company">Compañía</label>
+              <input
+                id="company"
+                name="company"
+                autocomplete="organization"
+              />
+            </div>
+            <div class="input-field">
+              <label for="address">Dirección</label>
+              <input
+                id="address"
+                name="address"
+                autocomplete="street-address"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <label for="city">Ciudad</label>
+              <input
+                id="city"
+                name="city"
+                autocomplete="address-level2"
+                required
+              />
+            </div>
+            <div class="select-field">
+              <label for="country">País</label>
+              <select
+                id="country"
+                name="country"
+                autocomplete="country"
+                required
+              >
+                <option value="">Seleccionar país</option>
+                <option value="AR">Argentina</option>
+                <option value="BO">Bolivia</option>
+                <option value="CL">Chile</option>
+                <option value="CO">Colombia</option>
+                <option value="CR">Costa Rica</option>
+                <option value="CU">Cuba</option>
+                <option value="DO">República Dominicana</option>
+                <option value="EC">Ecuador</option>
+                <option value="SV">El Salvador</option>
+                <option value="GT">Guatemala</option>
+                <option value="HN">Honduras</option>
+                <option value="MX">México</option>
+                <option value="NI">Nicaragua</option>
+                <option value="PA">Panamá</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Perú</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="UY">Uruguay</option>
+                <option value="VE">Venezuela</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="region">Provincia/Estado</label>
+              <input
+                id="region"
+                name="region"
+                autocomplete="address-level1"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <label for="zipCode">Código Postal</label>
+              <input
+                id="zipCode"
+                name="zipCode"
+                autocomplete="postal-code"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <label for="phone">Teléfono</label>
+              <input
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                required
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <button class="button button--xl checkout__submit">
+          Confirmar Orden
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
