@@ -3,10 +3,11 @@ import * as productRepository from "../repositories/productRepository.js";
 import { AppError } from "../utils/errorUtils.js";
 
 export async function renderCart(req, res) {
-  const cart = await cartService.getCart();
-  const total = await cartService.calculateCartTotal(cart.items);
+  const cart = await cartService.getCart(req.cartId);
 
-  res.render("cart", { cartItems: cart.items, total });
+  const total = cart && cart.items.length > 0 ? await cartService.calculateCartTotal(cart.items) : 0;
+
+  res.render("cart", { cartItems: cart?.items || [], total });
 }
 
 export async function addItem(req, res) {
@@ -21,7 +22,11 @@ export async function addItem(req, res) {
     throw new AppError("Producto no encontrado", 404);
   }
 
-  await cartService.addItemToCart(productId);
+  const cart = await cartService.addItemToCart(req.cartId, productId);
+
+  if (req.cartId !== cart.id) {
+    res.cookie("cartId", cart.id, { maxAge: 7 * 24 * 60 * 60 * 1000 });
+  }
 
   res.redirect("/products/" + productId);
 }
@@ -38,7 +43,11 @@ export async function updateItem(req, res) {
     throw new AppError("Cantidad inválida", 400);
   }
 
-  await cartService.updateItemQuantity(productId, newQuantity);
+  if (!req.cartId) {
+    throw new AppError("No hay carrito activo", 400);
+  }
+
+  await cartService.updateItemQuantity(req.cartId, productId, newQuantity);
 
   res.redirect("/cart");
 }
@@ -50,7 +59,11 @@ export async function deleteItem(req, res) {
     throw new AppError("ID de producto inválido", 400);
   }
 
-  await cartService.deleteItemFromCart(productId);
+  if (!req.cartId) {
+    throw new AppError("No hay carrito activo", 400);
+  }
+
+  await cartService.deleteItemFromCart(req.cartId, productId);
 
   res.redirect("/cart");
 }

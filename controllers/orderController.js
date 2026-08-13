@@ -3,19 +3,27 @@ import * as orderService from "../services/orderService.js";
 import { AppError } from "../utils/errorUtils.js";
 
 export async function renderCheckout(req, res) {
-  const cart = await cartService.getCart();
+  if (!req.cartId) {
+    throw new AppError("No hay carrito activo", 400);
+  }
 
-  const total = cart && cart.items.length > 0 
-    ? await cartService.calculateCartTotal(cart.items) 
-    : 0;
+  const cart = await cartService.getCart(req.cartId);
+
+  const total = cart && cart.items.length > 0 ? await cartService.calculateCartTotal(cart.items) : 0;
 
   res.render("checkout", { cartItems: cart?.items || [], total });
 }
 
 export async function placeOrder(req, res) {
+  if (!req.cartId) {
+    throw new AppError("No hay carrito activo", 400);
+  }
+
   const shippingInfo = req.body;
 
-  const order = await orderService.processCheckout(shippingInfo);
+  const order = await orderService.processCheckout(req.cartId, shippingInfo);
+
+  res.clearCookie("cartId");
 
   res.redirect("/order-confirmation?orderId=" + order.id);
 }

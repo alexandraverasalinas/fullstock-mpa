@@ -1,12 +1,46 @@
-import { getDb, saveDb } from "../db.js";
+import { getDb, saveDb, getNextId } from "../db.js";
 
-export async function findCart() {
+export async function find(id) {
   const db = await getDb();
-  return db.carts[0] || { id: 1, items: [] };
+
+  if (!db.carts) {
+    return null;
+  }
+
+  return db.carts.find((cart) => cart.id === id) || null;
 }
 
-export async function saveCart(cart) {
+export async function create() {
   const db = await getDb();
-  db.carts[0] = cart;
+
+  if (!db.carts) {
+    db.carts = [];
+  }
+
+  const id = await getNextId("carts");
+
+  const newCart = { id, items: [] };
+
+  db.carts.push(newCart);
+  await saveDb(db);
+
+  return newCart;
+}
+
+export async function update(cart) {
+  const db = await getDb();
+
+  if (!db.carts) {
+    db.carts = [];
+  }
+
+  const index = db.carts.findIndex((c) => c.id === cart.id);
+
+  if (index >= 0) {
+    db.carts[index] = cart;
+  } else {
+    db.carts.push(cart);
+  }
+
   await saveDb(db);
 }

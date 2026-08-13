@@ -6,7 +6,7 @@
       "slug": "polos",
       "imgSrc": "/images/polos.jpg",
       "alt": "Polos",
-        "description": "Polos exclusivos con diseños que todo desarrollador querrá lucir. Ideales para llevar el código a donde vayas."
+      "description": "Polos exclusivos con diseños que todo desarrollador querrá lucir. Ideales para llevar el código a donde vayas."
     },
     {
       "id": 2,
@@ -198,6 +198,19 @@
     {
       "id": 1,
       "items": []
+    },
+    {
+      "id": 2,
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "items": []
     }
   ],
   "orders": [
@@ -247,6 +260,108 @@
       "total": 13495,
       "status": "pending",
       "createdAt": "2026-08-08T02:10:39.438Z"
+    },
+    {
+      "id": 2,
+      "items": [
+        {
+          "productId": 11,
+          "name": "Taza Git",
+          "price": 1499,
+          "imgSrc": "/images/tazas/taza-git.png",
+          "quantity": 1
+        },
+        {
+          "productId": 1,
+          "name": "Polo React",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-react.png",
+          "quantity": 1
+        },
+        {
+          "productId": 17,
+          "name": "Sticker React",
+          "price": 500,
+          "imgSrc": "/images/stickers/sticker-react.png",
+          "quantity": 1
+        }
+      ],
+      "shippingInfo": {
+        "email": "correo@correo.com",
+        "firstName": "nom",
+        "lastName": "ap",
+        "company": "133",
+        "address": "av.holi",
+        "city": "lima",
+        "country": "PE",
+        "region": "lima",
+        "zipCode": "117",
+        "phone": "111222333"
+      },
+      "total": 3999,
+      "status": "pending",
+      "createdAt": "2026-08-12T15:40:35.106Z"
+    },
+    {
+      "id": 3,
+      "items": [
+        {
+          "productId": 1,
+          "name": "Polo React",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-react.png",
+          "quantity": 2
+        },
+        {
+          "productId": 16,
+          "name": "Sticker GitHub",
+          "price": 500,
+          "imgSrc": "/images/stickers/sticker-github.png",
+          "quantity": 1
+        }
+      ],
+      "shippingInfo": {
+        "email": "testino@mail.com",
+        "firstName": "Testino",
+        "lastName": "Diprueba",
+        "company": "",
+        "address": "Testino Calle 1",
+        "city": "Lima",
+        "country": "PE",
+        "region": "Lima",
+        "zipCode": "15348",
+        "phone": "+51987654321"
+      },
+      "total": 4500,
+      "status": "pending",
+      "createdAt": "2026-08-12T18:35:46.856Z"
+    },
+    {
+      "id": 4,
+      "items": [
+        {
+          "productId": 2,
+          "name": "Polo JavaScript",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-js.png",
+          "quantity": 1
+        }
+      ],
+      "shippingInfo": {
+        "email": "alexandraverasalinas@gmail.com",
+        "firstName": "a",
+        "lastName": "b",
+        "company": "c",
+        "address": "d",
+        "city": "e",
+        "country": "PR",
+        "region": "f",
+        "zipCode": "1222",
+        "phone": "5454545454"
+      },
+      "total": 2000,
+      "status": "pending",
+      "createdAt": "2026-08-13T16:44:44.568Z"
     }
   ]
 }
