@@ -3,6 +3,7 @@ import expressLayouts from "express-ejs-layouts";
 import cookieParser from "cookie-parser";
 
 import router from "./routes.js";
+import { authContext } from "./middlewares/authContext.js";
 import { cartContext } from "./middlewares/cartContext.js";
 import { globalData } from "./middlewares/globalData.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
@@ -19,6 +20,7 @@ app.set("view cache", false);
 app.use(expressLayouts);
 app.set("layout", "layout");
 
+app.use(authContext);
 app.use(cartContext);
 app.use(globalData);
 

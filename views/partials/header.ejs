@@ -1,4 +1,27 @@
 <header class="root__header">
+  <div class="auth-nav">
+    <div class="container auth-nav__container">
+      <nav aria-label="Autenticación de usuario">
+        <ul class="auth-nav__list">
+          <% if (locals.user) { %>
+          <li class="auth-nav__item">Bienvenido <%= locals.user.email %></li>
+          <li class="auth-nav__item">
+            <form action="/logout" method="POST">
+              <button class="button button--ghost auth-nav__button">Cerrar sesión</button>
+            </form>
+          </li>
+          <% } else { %>
+          <li class="auth-nav__item">
+            <a href="/login" class="auth-nav__link">Iniciar sesión</a>
+          </li>
+          <li class="auth-nav__item">
+            <a href="/signup" class="auth-nav__link">Crear cuenta</a>
+          </li>
+          <% } %>
+        </ul>
+      </nav>
+    </div>
+  </div>
   <div class="container header-main">
     <div class="header-main__top">
       <a href="/"><img src="/images/fullstock-logo.svg" alt="FullStock inicio" width="128" height="32" /></a>
