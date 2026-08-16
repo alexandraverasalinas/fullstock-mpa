@@ -215,6 +215,15 @@
     {
       "id": 4,
       "items": []
+    },
+    {
+      "id": 5,
+      "items": [
+        {
+          "productId": 5,
+          "quantity": 1
+        }
+      ]
     }
   ],
   "orders": [
@@ -400,6 +409,11 @@
       "id": 1,
       "email": "alexandraverasalinas@gmail.com",
       "password": "$2b$10$AriehciRUyqP4fd.yHK0i.GTL/mc5bVA3JkNTTd1TMg9sZW6WVsa6"
+    },
+    {
+      "id": 2,
+      "email": "holis@gmail.com",
+      "password": "$2b$10$.lnyuYCTLgnl1U9kz01uL.YesNYNNIllqPFd6sDHoJ.qiGb29WSRi"
     }
   ]
 }

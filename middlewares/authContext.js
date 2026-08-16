@@ -1,26 +1,26 @@
 // middlewares/authContext.js
 import * as userService from "../services/userService.js";
+import { getCookie, clearCookie } from "../utils/cookieUtils.js";
 
 export async function authContext(req, res, next) {
   req.user = null;
   res.locals.user = null;
 
-  const userId = req.signedCookies.userId;
+  const userId = getCookie(req, "userId");
 
   if (!userId) {
     return next();
   }
 
   if (userId === false) {
-    console.error("¡Alerta de seguridad! Cookie manipulada.");
-    res.clearCookie("userId");
+    clearCookie(res, "userId");
     return next();
   }
 
   const user = await userService.getUserById(Number(userId));
 
   if (!user) {
-    res.clearCookie("userId");
+    clearCookie(res, "userId");
     return next();
   }
 

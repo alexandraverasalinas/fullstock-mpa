@@ -1,8 +1,10 @@
+import { getCookie, clearCookie } from "../utils/cookieUtils.js";
+
 export function cartContext(req, res, next) {
-  const cartIdCookie = req.signedCookies.cartId;
+  const cartIdCookie = getCookie(req, "cartId");
 
   if (cartIdCookie === false) {
-    res.clearCookie("cartId");
+    clearCookie(res, "cartId");
     req.cartId = null;
     return next();
   }
