@@ -44,6 +44,8 @@
             type="email"
             autocomplete="email"
             required
+            value="<%= locals.user ? locals.user.email : '' %>"
+            <%= locals.user ? 'readonly' : '' %>
           />
         </div>
 

@@ -4,11 +4,8 @@ import { AppError } from "../utils/errorUtils.js";
 import { setCookie } from "../utils/cookieUtils.js";
 
 export async function renderCart(req, res) {
-  const cart = await cartService.getCart(req.cartId);
-
-  const total = cart && cart.items.length > 0 ? await cartService.calculateCartTotal(cart.items) : 0;
-
-  res.render("cart", { cartItems: cart?.items || [], total });
+  const cart = req.cart || { items: [], total: 0 };
+  res.render("cart", { cartItems: cart.items, total: cart.total });
 }
 
 export async function addItem(req, res) {
@@ -23,9 +20,10 @@ export async function addItem(req, res) {
     throw new AppError("Producto no encontrado", 404);
   }
 
-  const cart = await cartService.addItemToCart(req.cartId, productId);
+  const userId = req.user?.id;
+  const cart = await cartService.addItemToCart(req.cartId, productId, userId);
 
-  if (req.cartId !== cart.id) {
+  if (!req.user && cart.id !== req.cartId) {
     setCookie(res, "cartId", cart.id);
   }
 

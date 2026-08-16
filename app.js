@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 import router from "./routes.js";
 import { authContext } from "./middlewares/authContext.js";
 import { cartContext } from "./middlewares/cartContext.js";
-import { globalData } from "./middlewares/globalData.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 
 const PORT = 3000;
@@ -22,7 +21,6 @@ app.set("layout", "layout");
 
 app.use(authContext);
 app.use(cartContext);
-app.use(globalData);
 
 app.use(router);
 

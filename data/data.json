@@ -224,6 +224,20 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "items": [
+        {
+          "productId": 2,
+          "quantity": 2
+        },
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ]
     }
   ],
   "orders": [

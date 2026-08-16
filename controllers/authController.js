@@ -1,4 +1,6 @@
 import * as authService from "../services/authService.js";
+import * as cartService from "../services/cartService.js";
+import * as cartRepository from "../repositories/cartRepository.js";
 import { setCookie, clearCookie } from "../utils/cookieUtils.js";
 
 export function renderSignup(req, res) {
@@ -12,7 +14,21 @@ export function renderSignup(req, res) {
 export async function handleSignup(req, res) {
   const { email, password, confirmPassword } = req.body;
 
-  await authService.signup(email, password, confirmPassword);
+  const user = await authService.signup(email, password, confirmPassword);
+
+  if (req.cartId) {
+    await cartService.mergeCarts(req.cartId, user.id);
+  }
+
+  const userCart = await cartRepository.findByUserId(user.id);
+
+  setCookie(res, "userId", user.id);
+
+  if (userCart) {
+    setCookie(res, "cartId", userCart.id);
+  } else {
+    clearCookie(res, "cartId");
+  }
 
   res.redirect("/");
 }
@@ -31,7 +47,19 @@ export async function handleLogin(req, res) {
   try {
     const user = await authService.login(email, password);
 
+    if (req.cartId) {
+      await cartService.mergeCarts(req.cartId, user.id);
+    }
+
+    const userCart = await cartRepository.findByUserId(user.id);
+
     setCookie(res, "userId", user.id);
+
+    if (userCart) {
+      setCookie(res, "cartId", userCart.id);
+    } else {
+      clearCookie(res, "cartId");
+    }
 
     res.redirect("/");
   } catch (error) {
@@ -41,5 +69,6 @@ export async function handleLogin(req, res) {
 
 export function handleLogout(_req, res) {
   clearCookie(res, "userId");
+  clearCookie(res, "cartId");
   res.redirect("/");
 }

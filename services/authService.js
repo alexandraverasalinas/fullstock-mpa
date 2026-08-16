@@ -1,4 +1,5 @@
 import * as userService from "./userService.js";
+import * as orderService from "./orderService.js";
 import { AppError } from "../utils/errorUtils.js";
 import { hashPassword, comparePassword } from "../utils/passwordUtils.js";
 
@@ -13,10 +14,14 @@ export async function signup(email, password, confirmPassword) {
   }
 
   const hashedPassword = await hashPassword(password);
-  return await userService.createUser({
+  const user = await userService.createUser({
     email,
     password: hashedPassword,
   });
+
+  await orderService.linkPastOrdersToUser(email, user.id);
+
+  return user;
 }
 
 export async function login(email, password) {
