@@ -238,6 +238,44 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": 8,
+      "userId": 3,
+      "items": [
+        {
+          "productId": 10,
+          "quantity": 3
+        },
+        {
+          "productId": 12,
+          "quantity": 1
+        },
+        {
+          "productId": 11,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "userId": 4,
+      "items": [
+        {
+          "productId": 10,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "userId": 5,
+      "items": [
+        {
+          "productId": 9,
+          "quantity": 3
+        }
+      ]
     }
   ],
   "orders": [
@@ -361,7 +399,8 @@
       },
       "total": 4500,
       "status": "pending",
-      "createdAt": "2026-08-12T18:35:46.856Z"
+      "createdAt": "2026-08-12T18:35:46.856Z",
+      "userId": 3
     },
     {
       "id": 4,
@@ -428,6 +467,21 @@
       "id": 2,
       "email": "holis@gmail.com",
       "password": "$2b$10$.lnyuYCTLgnl1U9kz01uL.YesNYNNIllqPFd6sDHoJ.qiGb29WSRi"
+    },
+    {
+      "id": 3,
+      "email": "testino@mail.com",
+      "password": "$2b$10$RJlPrxF0EN/LeHBny4tC7Osyj3ivbvqRPCAPLRhnFBsFzywwHURs6"
+    },
+    {
+      "id": 4,
+      "email": "diego@codeable.la",
+      "password": "$2b$10$Z/BiY6T1XmUHoRGFm6l42eoO11jSWgKimsQQ2Fd8aMT5MdPGHmMiu"
+    },
+    {
+      "id": 5,
+      "email": "test@mail.com",
+      "password": "$2b$10$VtFFfVdLd98I7uhQ07Qd2OQ0I8bwhtliG6/Jx9atmzV6mtlz1Fa0a"
     }
   ]
 }

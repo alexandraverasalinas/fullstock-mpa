@@ -1,9 +1,8 @@
-<!-- views/login.ejs -->
+<script type="module" src="/js/toggle-password.js"></script>
+
 <section class="section">
   <div class="container login">
     <h1 class="login__title">Inicia sesión en tu cuenta</h1>
- 
-    <!-- El formulario envía los datos vía POST a la ruta /login -->
     <form class="login__form" method="post" action="/login">
       <div class="input-field">
         <label for="email">Correo electrónico</label>
@@ -23,13 +22,12 @@
           type="password"
           required
           autocomplete="current-password"
+          data-toggle-password
         />
       </div>
       <button type="submit" class="button button--lg login__submit">
         Iniciar sesión
       </button>
- 
-      <!-- Mensaje de error, si existe -->
       <% if (locals.error) { %>
       <p class="login__error"><%= locals.error %></p>
       <% } %>

@@ -41,6 +41,7 @@
 @import "3_components/auth-nav.css" layer(components);
 @import "3_components/signup.css" layer(components);
 @import "3_components/login.css" layer(components);
+@import "3_components/password-input.css" layer(components);
 
 /* 4 Utilities */
 /* @import "4_utilities/__.css" layer(utilities); */
