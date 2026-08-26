@@ -1,3 +1,9 @@
+<script type="module">
+  import { mountThemeToggler } from "/js/theme-toggler.js";
+  const headerActions = document.querySelector(".header-actions");
+  mountThemeToggler(headerActions);
+</script>
+
 <header class="root__header">
   <div class="auth-nav">
     <div class="container auth-nav__container">
@@ -15,7 +21,7 @@
             <a href="/login" class="auth-nav__link">Iniciar sesión</a>
           </li>
           <li class="auth-nav__item">
-            <a href="/signup" class="auth-nav__link">Crear cuenta</a>
+            <a href="/signup" class="auth-nav__link">Crear una cuenta</a>
           </li>
           <% } %>
         </ul>

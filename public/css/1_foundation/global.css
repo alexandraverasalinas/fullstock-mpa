@@ -11,6 +11,19 @@ body {
   background-color: var(--background);
 }
 
+html {
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+
 h1,
 h2,
 h3,
