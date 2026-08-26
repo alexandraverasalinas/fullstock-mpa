@@ -1,3 +1,5 @@
+<script src="/js/price-filter.js" type="module"></script>
+
 <section class="category-header">
   <div class="container">
     <div class="category-header__content">
@@ -9,7 +11,7 @@
 <section class="products">
   <div class="container">
     <div class="products__layout">
-      <form class="products__price-filter price-filter">
+      <form class="products__price-filter price-filter" data-js="filter-form">
         <fieldset>
           <legend class="price-filter__legend">Precio</legend>
           <div class="price-filter__inputs">
@@ -23,11 +25,17 @@
             </div>
           </div>
         </fieldset>
-        <button type="submit" class="button button--xl button--secondary price-filter__button">Filtar Productos</button>
+        <button type="submit" class="button button--xl button--secondary price-filter__button">Filtrar Productos</button>
       </form>
       <div class="products__grid">
         <% for (const product of products) { %>
-        <a href="/products/<%= product.id %>" class="product-card">
+        
+          href="/products/<%= product.id %>"
+          class="product-card"
+          data-price="<%= product.price / 100 %>"
+          data-js="product-card"
+          data-visible="<%= product.isVisible %>"
+        >
           <div class="product-card__container">
             <div class="product-card__image-container">
               <img src="<%= product.imgSrc %>" alt="<%= product.name %>" class="product-card__image" />

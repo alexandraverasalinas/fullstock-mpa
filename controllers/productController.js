@@ -16,19 +16,29 @@ export async function renderCategory(req, res) {
     throw new AppError("Categoría no encontrada", 404);
   }
 
-  const minPrice = parsePriceToCents(req.query.minPrice);
-  const maxPrice = parsePriceToCents(req.query.maxPrice);
+  const minPriceCents = parsePriceToCents(req.query.minPrice);
+  const maxPriceCents = parsePriceToCents(req.query.maxPrice);
 
-  const products = await productService.getProductsByCategory(category.id, {
-    minPrice: minPrice ?? -Infinity,
-    maxPrice: maxPrice ?? Infinity,
+  const minPriceVal = minPriceCents !== null ? minPriceCents / 100 : "";
+  const maxPriceVal = maxPriceCents !== null ? maxPriceCents / 100 : "";
+
+  const products = await productService.getProductsByCategory(category.id);
+
+  const productsWithVisibility = products.map((product) => {
+    const price = product.price / 100;
+
+    const isVisible =
+      (minPriceVal === "" || price >= minPriceVal) &&
+      (maxPriceVal === "" || price <= maxPriceVal);
+
+    return { ...product, isVisible };
   });
 
   res.render("category", {
     category,
-    products,
-    minPrice: minPrice !== null ? minPrice / 100 : "",
-    maxPrice: maxPrice !== null ? maxPrice / 100 : "",
+    products: productsWithVisibility,
+    minPrice: minPriceVal,
+    maxPrice: maxPriceVal,
   });
 }
 

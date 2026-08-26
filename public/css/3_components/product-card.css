@@ -1,6 +1,10 @@
 .product-card {
   display: block;
   border-radius: 0.75rem;
+
+  &[data-visible="false"] {
+    display: none;
+  }
 }
 
 .product-card__container {
