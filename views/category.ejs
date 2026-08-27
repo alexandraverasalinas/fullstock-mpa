@@ -29,13 +29,7 @@
       </form>
       <div class="products__grid">
         <% for (const product of products) { %>
-        
-          href="/products/<%= product.id %>"
-          class="product-card"
-          data-price="<%= product.price / 100 %>"
-          data-js="product-card"
-          data-visible="<%= product.isVisible %>"
-        >
+        <a href="/products/<%= product.id %>" class="product-card" data-price="<%= product.price / 100 %>" data-js="product-card" data-visible="<%= product.isVisible %>">
           <div class="product-card__container">
             <div class="product-card__image-container">
               <img src="<%= product.imgSrc %>" alt="<%= product.name %>" class="product-card__image" />
