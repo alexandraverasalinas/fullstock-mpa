@@ -1,3 +1,5 @@
+<script type="module" src="/js/add-to-cart.js"></script>
+
 <section class="product">
   <div class="container product__container">
     <div class="product__image">
@@ -7,7 +9,7 @@
       <h1 class="product__title"><%= product.name %></h1>
       <p class="product__price">S/ <%= product.price / 100 %></p>
       <p class="product__description"><%= product.description %></p>
-      <form method="post" action="/cart/add-item">
+      <form method="post" action="/cart/add-item" data-js="add-to-cart-form">
         <input type="hidden" name="productId" value="<%= product.id %>" />
         <button class="button button--xl product__button" type="submit">Agregar al Carrito</button>
       </form>

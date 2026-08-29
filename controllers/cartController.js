@@ -27,6 +27,10 @@ export async function addItem(req, res) {
     setCookie(res, "cartId", cart.id);
   }
 
+  if (req.accepts(["html", "json"]) === "json") {
+    return res.status(201).json({ cart });
+  }
+
   res.redirect("/products/" + productId);
 }
 

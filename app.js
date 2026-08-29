@@ -12,6 +12,7 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.set("view engine", "ejs");
