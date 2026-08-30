@@ -1,37 +1,32 @@
+<script type="module">
+  import { mountCart } from "/js/cart.js";
+  const cartContainer = document.querySelector('[data-js="cart-container"]');
+  mountCart(cartContainer);
+</script>
+
 <section class="section">
-  <div class="container cart">
+  <div class="container cart" data-js="cart-container">
     <h1 class="cart__title">Carrito de compras</h1>
-    
+
     <% if (cartItems.length === 0) { %>
     <div class="cart__container">
       <p>Tu carrito está vacío</p>
-      <a href="/" class="button button--lg">Continuar Comprando</a>
+      <a href="/" class="button button--lg">Ir a la tienda</a>
     </div>
     <% } else { %>
     <div class="cart__container">
       <% for (const item of cartItems) { %>
-      <div class="cart__item">
+      <div class="cart__item" data-js="cart-item">
         <div class="cart__item-image">
-          <img
-            src="<%= item.product.imgSrc %>"
-            alt="<%= item.product.name %>"
-            class="cart__item-image-content"
-          />
+          <img src="<%= item.product.imgSrc %>" alt="<%= item.product.name %>" class="cart__item-image-content" />
         </div>
         <div class="cart__item-details">
           <div class="cart__item-header">
             <h2 class="cart__item-title"><%= item.product.name %></h2>
             <form method="post" action="/cart/delete-item">
               <input type="hidden" name="productId" value="<%= item.productId %>" />
-              <button
-                class="button button--sm-icon button--outline"
-                aria-label="Eliminar artículo"
-                type="submit"
-              >
-                <img
-                  src="/images/icons/trash.svg"
-                  alt="Eliminar artículo"
-                />
+              <button class="button button--sm-icon button--outline" aria-label="Eliminar artículo" type="submit">
+                <img src="/images/icons/trash.svg" alt="Eliminar artículo" />
               </button>
             </form>
           </div>
@@ -43,32 +38,18 @@
                 <% if (item.quantity > 1) { %>
                 <input type="hidden" name="quantity" value="<%= item.quantity - 1 %>" />
                 <% } %>
-                <button
-                  class="button button--sm-icon button--outline"
-                  aria-label="Reducir cantidad"
-                  type="submit"
-                >
-                  <img
-                    src="/images/icons/minus.svg"
-                    alt="Reducir cantidad"
-                  />
+                <button class="button button--sm-icon button--outline" aria-label="Reducir cantidad" type="submit">
+                  <img src="/images/icons/minus.svg" alt="Reducir cantidad" />
                 </button>
               </form>
-              
+
               <span class="cart__item-quantity-display"><%= item.quantity %></span>
-              
+
               <form method="post" action="/cart/update-item">
                 <input type="hidden" name="productId" value="<%= item.productId %>" />
                 <input type="hidden" name="quantity" value="<%= item.quantity + 1 %>" />
-                <button
-                  class="button button--sm-icon button--outline"
-                  aria-label="Aumentar cantidad"
-                  type="submit"
-                >
-                  <img
-                    src="/images/icons/plus.svg"
-                    alt="Aumentar cantidad"
-                  />
+                <button class="button button--sm-icon button--outline" aria-label="Aumentar cantidad" type="submit">
+                  <img src="/images/icons/plus.svg" alt="Aumentar cantidad" />
                 </button>
               </form>
             </div>
@@ -76,7 +57,7 @@
         </div>
       </div>
       <% } %>
-      
+
       <div class="cart__total">
         <p>Total</p>
         <p>S/ <%= (total / 100).toFixed(2) %></p>

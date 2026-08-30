@@ -13,7 +13,9 @@
           <li class="auth-nav__item">Bienvenido <%= locals.user.email %></li>
           <li class="auth-nav__item">
             <form action="/logout" method="POST">
-              <button class="button button--ghost auth-nav__button">Cerrar sesión</button>
+              <button class="button button--ghost auth-nav__button">
+                Cerrar sesión
+              </button>
             </form>
           </li>
           <% } else { %>
@@ -30,12 +32,25 @@
   </div>
   <div class="container header-main">
     <div class="header-main__top">
-      <a href="/"><img src="/images/fullstock-logo.svg" alt="FullStock inicio" width="128" height="32" /></a>
+      <a href="/"
+        ><img
+          src="/images/fullstock-logo.svg"
+          alt="FullStock inicio"
+          width="128"
+          height="32"
+      /></a>
       <div class="header-actions">
-        <a href="/cart" class="button button--ghost button--xl-icon header-actions__cart" aria-label="Carrito de compras" data-js="cart-link">
+        <a
+          href="/cart"
+          class="button button--ghost button--xl-icon header-actions__cart"
+          aria-label="Carrito de compras"
+          data-js="cart-link"
+        >
           <img src="/images/icons/cart.svg" alt="Carrito de compras" />
           <% if (cartItemsCount > 0) { %>
-          <span class="header-actions__cart-badge" data-js="cart-badge"><%= cartItemsCount %></span>
+          <span class="header-actions__cart-badge" data-js="cart-badge"
+            ><%= cartItemsCount %></span
+          >
           <% } %>
         </a>
       </div>
@@ -44,13 +59,19 @@
     <nav aria-label="Navegación principal" class="main-nav">
       <ul class="main-nav__list" role="menubar">
         <li class="main-nav__item" role="none">
-          <a href="/categories/polos" role="menuitem" class="main-nav__link">Polos</a>
+          <a href="/categories/polos" role="menuitem" class="main-nav__link"
+            >Polos</a
+          >
         </li>
         <li class="main-nav__item" role="none">
-          <a href="/categories/tazas" role="menuitem" class="main-nav__link">Tazas</a>
+          <a href="/categories/tazas" role="menuitem" class="main-nav__link"
+            >Tazas</a
+          >
         </li>
         <li class="main-nav__item" role="none">
-          <a href="/categories/stickers" role="menuitem" class="main-nav__link">Stickers</a>
+          <a href="/categories/stickers" role="menuitem" class="main-nav__link"
+            >Stickers</a
+          >
         </li>
       </ul>
     </nav>

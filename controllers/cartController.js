@@ -52,6 +52,11 @@ export async function updateItem(req, res) {
 
   await cartService.updateItemQuantity(req.cartId, productId, newQuantity);
 
+  if (req.accepts(["html", "json"]) === "json") {
+    const cart = await cartService.getCart(req.cartId);
+    return res.json({ cart });
+  }
+
   res.redirect("/cart");
 }
 
@@ -67,6 +72,11 @@ export async function deleteItem(req, res) {
   }
 
   await cartService.deleteItemFromCart(req.cartId, productId);
+
+  if (req.accepts(["html", "json"]) === "json") {
+    const cart = await cartService.getCart(req.cartId);
+    return res.json({ cart });
+  }
 
   res.redirect("/cart");
 }
