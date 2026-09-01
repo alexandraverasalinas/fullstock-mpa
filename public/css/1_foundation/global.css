@@ -24,6 +24,13 @@ html.light {
 }
 
 
+:focus,
+input,
+select,
+textarea {
+  scroll-margin-top: calc(5.5rem + 2.5rem);
+}
+
 h1,
 h2,
 h3,

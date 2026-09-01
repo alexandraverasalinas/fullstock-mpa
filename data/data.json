@@ -288,6 +288,10 @@
         {
           "productId": 15,
           "quantity": 3
+        },
+        {
+          "productId": 17,
+          "quantity": 2
         }
       ]
     }

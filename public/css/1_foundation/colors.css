@@ -72,4 +72,6 @@
   --primary-background-hover: var(--accent-10);
   --secondary-background-hover: var(--neutral-4);
   --border-hover: var(--neutral-8);
+
+  --error: light-dark(hsl(10 82% 45%), hsl(12 100% 74%));
 }

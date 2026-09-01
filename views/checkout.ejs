@@ -1,3 +1,10 @@
+<script type="module">
+  import { setupValidation } from "/js/form-validation.js";
+  import { orderSchema } from "/js/shared/orderSchema.js";
+  const checkoutForm = document.querySelector(".checkout__form");
+  setupValidation(checkoutForm, orderSchema);
+</script>
+
 <section class="section checkout">
   <div class="container">
     <div class="checkout__layout">
@@ -7,21 +14,13 @@
           <% for (const item of cartItems) { %>
           <div class="checkout__item">
             <div class="checkout__item-image">
-              <img
-                src="<%= item.product.imgSrc %>"
-                alt="<%= item.product.name %>"
-                class="checkout__item-image-content"
-              />
+              <img src="<%= item.product.imgSrc %>" alt="<%= item.product.name %>" class="checkout__item-image-content" />
             </div>
             <div class="checkout__item-details">
               <h3 class="checkout__item-title"><%= item.product.name %></h3>
               <div class="checkout__item-price">
                 <p><%= item.quantity %></p>
-                <img
-                  src="/images/icons/x.svg"
-                  alt=""
-                  class="checkout__item-price-icon"
-                />
+                <img src="/images/icons/x.svg" alt="" class="checkout__item-price-icon" />
                 <p>S/ <%= (item.product.price / 100).toFixed(2) %></p>
               </div>
             </div>
@@ -36,17 +35,10 @@
 
       <form class="checkout__form" action="/checkout/place-order" method="post">
         <legend class="checkout__legend">Información de contacto</legend>
-        <div class="input-field">
+        <div class="input-field <%= locals.errors?.email ? 'input-field--error' : '' %>">
           <label for="email">Correo electrónico</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-            value="<%= locals.user ? locals.user.email : '' %>"
-            <%= locals.user ? 'readonly' : '' %>
-          />
+          <input id="email" name="email" type="email" autocomplete="email" required value="<%= locals.user ? locals.user.email : (locals.values?.email || '') %>" <%= locals.user ? 'readonly' : '' %> />
+          <% if (locals.errors?.email) { %><span class="input-field__error"><%= locals.errors.email[0] %></span><% } %>
         </div>
 
         <div class="separator checkout__separator"></div>
@@ -54,113 +46,60 @@
         <fieldset>
           <legend class="checkout__legend">Información de envío</legend>
           <div class="checkout__form-fields">
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.firstName ? 'input-field--error' : '' %>">
               <label for="firstName">Nombre</label>
-              <input
-                id="firstName"
-                name="firstName"
-                autocomplete="given-name"
-                required
-              />
+              <input id="firstName" name="firstName" autocomplete="given-name" required value="<%= locals.values?.firstName || '' %>" />
+              <% if (locals.errors?.firstName) { %><span class="input-field__error"><%= locals.errors.firstName[0] %></span><% } %>
             </div>
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.lastName ? 'input-field--error' : '' %>">
               <label for="lastName">Apellido</label>
-              <input
-                id="lastName"
-                name="lastName"
-                autocomplete="family-name"
-                required
-              />
+              <input id="lastName" name="lastName" autocomplete="family-name" required value="<%= locals.values?.lastName || '' %>" />
+              <% if (locals.errors?.lastName) { %><span class="input-field__error"><%= locals.errors.lastName[0] %></span><% } %>
             </div>
             <div class="input-field">
               <label for="company">Compañía</label>
-              <input
-                id="company"
-                name="company"
-                autocomplete="organization"
-              />
+              <input id="company" name="company" autocomplete="organization" value="<%= locals.values?.company || '' %>" />
             </div>
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.address ? 'input-field--error' : '' %>">
               <label for="address">Dirección</label>
-              <input
-                id="address"
-                name="address"
-                autocomplete="street-address"
-                required
-              />
+              <input id="address" name="address" autocomplete="street-address" required value="<%= locals.values?.address || '' %>" />
+              <% if (locals.errors?.address) { %><span class="input-field__error"><%= locals.errors.address[0] %></span><% } %>
             </div>
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.city ? 'input-field--error' : '' %>">
               <label for="city">Ciudad</label>
-              <input
-                id="city"
-                name="city"
-                autocomplete="address-level2"
-                required
-              />
+              <input id="city" name="city" autocomplete="address-level2" required value="<%= locals.values?.city || '' %>" />
+              <% if (locals.errors?.city) { %><span class="input-field__error"><%= locals.errors.city[0] %></span><% } %>
             </div>
-            <div class="select-field">
+            <div class="select-field <%= locals.errors?.country ? 'input-field--error' : '' %>">
               <label for="country">País</label>
-              <select
-                id="country"
-                name="country"
-                autocomplete="country"
-                required
-              >
+              <select id="country" name="country" autocomplete="country" required>
                 <option value="">Seleccionar país</option>
-                <option value="AR">Argentina</option>
-                <option value="BO">Bolivia</option>
-                <option value="CL">Chile</option>
-                <option value="CO">Colombia</option>
-                <option value="CR">Costa Rica</option>
-                <option value="CU">Cuba</option>
-                <option value="DO">República Dominicana</option>
-                <option value="EC">Ecuador</option>
-                <option value="SV">El Salvador</option>
-                <option value="GT">Guatemala</option>
-                <option value="HN">Honduras</option>
-                <option value="MX">México</option>
-                <option value="NI">Nicaragua</option>
-                <option value="PA">Panamá</option>
-                <option value="PY">Paraguay</option>
-                <option value="PE">Perú</option>
-                <option value="PR">Puerto Rico</option>
-                <option value="UY">Uruguay</option>
-                <option value="VE">Venezuela</option>
+                <% const countries = [ {value: 'AR', label: 'Argentina'}, {value: 'BO', label: 'Bolivia'}, {value: 'CL', label: 'Chile'}, {value: 'CO', label: 'Colombia'}, {value: 'CR', label: 'Costa Rica'}, {value: 'CU', label: 'Cuba'}, {value: 'DO', label: 'República Dominicana'}, {value: 'EC', label: 'Ecuador'}, {value: 'SV', label: 'El Salvador'}, {value: 'GT', label: 'Guatemala'}, {value: 'HN', label: 'Honduras'}, {value: 'MX', label: 'México'}, {value: 'NI', label: 'Nicaragua'}, {value: 'PA', label: 'Panamá'}, {value: 'PY', label: 'Paraguay'}, {value: 'PE', label: 'Perú'}, {value: 'PR', label: 'Puerto Rico'}, {value: 'UY', label: 'Uruguay'}, {value: 'VE', label: 'Venezuela'} ]; %>
+                <% for (const c of countries) { %>
+                <option value="<%= c.value %>" <%= locals.values?.country === c.value ? 'selected' : '' %>><%= c.label %></option>
+                <% } %>
               </select>
+              <% if (locals.errors?.country) { %><span class="input-field__error"><%= locals.errors.country[0] %></span><% } %>
             </div>
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.region ? 'input-field--error' : '' %>">
               <label for="region">Provincia/Estado</label>
-              <input
-                id="region"
-                name="region"
-                autocomplete="address-level1"
-                required
-              />
+              <input id="region" name="region" autocomplete="address-level1" required value="<%= locals.values?.region || '' %>" />
+              <% if (locals.errors?.region) { %><span class="input-field__error"><%= locals.errors.region[0] %></span><% } %>
             </div>
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.zipCode ? 'input-field--error' : '' %>">
               <label for="zipCode">Código Postal</label>
-              <input
-                id="zipCode"
-                name="zipCode"
-                autocomplete="postal-code"
-                required
-              />
+              <input id="zipCode" name="zipCode" autocomplete="postal-code" required value="<%= locals.values?.zipCode || '' %>" />
+              <% if (locals.errors?.zipCode) { %><span class="input-field__error"><%= locals.errors.zipCode[0] %></span><% } %>
             </div>
-            <div class="input-field">
+            <div class="input-field <%= locals.errors?.phone ? 'input-field--error' : '' %>">
               <label for="phone">Teléfono</label>
-              <input
-                id="phone"
-                name="phone"
-                autocomplete="tel"
-                required
-              />
+              <input id="phone" name="phone" autocomplete="tel" required value="<%= locals.values?.phone || '' %>" />
+              <% if (locals.errors?.phone) { %><span class="input-field__error"><%= locals.errors.phone[0] %></span><% } %>
             </div>
           </div>
         </fieldset>
 
-        <button class="button button--xl checkout__submit">
-          Confirmar Orden
-        </button>
+        <button class="button button--xl checkout__submit">Confirmar Orden</button>
       </form>
     </div>
   </div>

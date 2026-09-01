@@ -3,3 +3,16 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+
+.input-field--error input,
+.input-field--error select,
+.input-field--error textarea {
+  border-color: var(--error);
+}
+
+.input-field__error {
+  color: var(--error);
+  font-size: 0.75rem;
+  font-weight: 500;
+}

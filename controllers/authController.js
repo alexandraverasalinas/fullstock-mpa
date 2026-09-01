@@ -1,7 +1,9 @@
+import { z } from "zod";
 import * as authService from "../services/authService.js";
 import * as cartService from "../services/cartService.js";
 import * as cartRepository from "../repositories/cartRepository.js";
 import { setCookie, clearCookie } from "../utils/cookieUtils.js";
+import { loginSchema, signupSchema } from "../public/js/shared/authSchemas.js";
 
 export function renderSignup(req, res) {
   if (req.user) {
@@ -12,7 +14,14 @@ export function renderSignup(req, res) {
 }
 
 export async function handleSignup(req, res) {
-  const { email, password, confirmPassword } = req.body;
+  const result = signupSchema.safeParse(req.body);
+
+  if (!result.success) {
+    const errors = z.flattenError(result.error).fieldErrors;
+    return res.render("signup", { errors, values: req.body });
+  }
+
+  const { email, password, confirmPassword } = result.data;
 
   const user = await authService.signup(email, password, confirmPassword);
 
@@ -42,7 +51,14 @@ export function renderLogin(req, res) {
 }
 
 export async function handleLogin(req, res) {
-  const { email, password } = req.body;
+  const result = loginSchema.safeParse(req.body);
+
+  if (!result.success) {
+    const errors = z.flattenError(result.error).fieldErrors;
+    return res.render("login", { errors, values: req.body });
+  }
+
+  const { email, password } = result.data;
 
   try {
     const user = await authService.login(email, password);
