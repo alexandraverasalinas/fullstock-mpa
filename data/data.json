@@ -228,16 +228,7 @@
     {
       "id": 7,
       "userId": 1,
-      "items": [
-        {
-          "productId": 2,
-          "quantity": 2
-        },
-        {
-          "productId": 1,
-          "quantity": 1
-        }
-      ]
+      "items": []
     },
     {
       "id": 8,
@@ -473,6 +464,48 @@
       "total": 1499,
       "status": "pending",
       "createdAt": "2026-08-16T16:58:45.438Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "items": [
+        {
+          "productId": 2,
+          "name": "Polo JavaScript",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-js.png",
+          "quantity": 2
+        },
+        {
+          "productId": 1,
+          "name": "Polo React",
+          "price": 2000,
+          "imgSrc": "/images/polos/polo-react.png",
+          "quantity": 1
+        },
+        {
+          "productId": 14,
+          "name": "Taza SQL",
+          "price": 1499,
+          "imgSrc": "/images/tazas/taza-sql.png",
+          "quantity": 1
+        }
+      ],
+      "shippingInfo": {
+        "email": "alexandraverasalinas@gmail.com",
+        "firstName": "Ale",
+        "lastName": "ap",
+        "company": "co",
+        "address": "dir",
+        "city": "ci",
+        "country": "PE",
+        "region": "pr",
+        "zipCode": "co",
+        "phone": "556556556"
+      },
+      "total": 7499,
+      "status": "pending",
+      "createdAt": "2026-09-05T17:17:15.350Z"
     }
   ],
   "users": [
